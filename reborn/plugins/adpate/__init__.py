@@ -1,4 +1,3 @@
-import sys
 import time
 from random import randint
 
@@ -7,6 +6,7 @@ from nonebot import on_natural_language
 from nonebot import NLPSession, IntentCommand
 from reborn.src.util import file, list
 from reborn.src.util.text import StrUtil
+from src.util.language import is_chines, skip
 
 greet_tuple = ('早安', '早上好', '早', '早啊', '晚安', '晚上好', '午安')
 
@@ -81,4 +81,7 @@ async def adpate(session: NLPSession):
     msg = session.msg
     if msg in greet_tuple:
         return IntentCommand(90.0, 'greet', args={'text': session.msg})
-    return IntentCommand(randint(30, 70) * 1.0, 'adpate_text', args={'text': session.msg})
+    elif not is_chines(msg) and not skip(msg):
+        return IntentCommand(90.0, 'translate', args={'text': session.msg})
+    else:
+        return IntentCommand(randint(30, 70) * 1.0, 'adpate_text', args={'text': session.msg})

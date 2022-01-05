@@ -1,8 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from util.text import StrUtil
+
 
 def is_chines(message):
-    for ch in message.decode('utf-8'):
+    trust = 0
+    for ch in message:
         if u'\u4e00' <= ch <= u'\u9fff':
-            return True
-    return False
+            trust += 1
+    return trust / len(message) > 0.7
+
+
+
+def skip(message:str):
+    if message.startswith('[CQ:') or StrUtil.is_mathe_expression(message):
+        return True
+    else:
+        return False
