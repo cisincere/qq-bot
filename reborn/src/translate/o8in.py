@@ -2,6 +2,10 @@ import requests
 import json
 
 
+# 后续需要更新2，目前的必应翻译接口不稳定
+"""
+后续可能使用百度的接口，js加密使用splash或者python的第三方库
+"""
 def translate(text):
     try:
         headers = {
