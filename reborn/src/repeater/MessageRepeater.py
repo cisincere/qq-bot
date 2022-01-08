@@ -1,0 +1,2 @@
+class MessageRepeater(object):
+    pass

@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 import time
 from random import randint
 
@@ -65,8 +69,8 @@ async def greet(session: CommandSession):
     await session.send(result)
 
 
-@on_command('adpate_text', only_to_me=False)
-async def adpate_text(session: CommandSession):
+@on_command('adapter_text', only_to_me=False)
+async def adapter_text(session: CommandSession):
     message = session.state.get('text')
     if StrUtil.is_mathe_expression(message):
         print(message)
@@ -77,11 +81,11 @@ async def adpate_text(session: CommandSession):
 
 
 @on_natural_language(only_short_message=False, only_to_me=False, allow_empty_message=True)
-async def adpate(session: NLPSession):
+async def adapter(session: NLPSession):
     msg = session.msg
     if msg in greet_tuple:
         return IntentCommand(90.0, 'greet', args={'text': session.msg})
     elif not is_chines(msg) and not skip(msg):
         return IntentCommand(90.0, 'translate', args={'text': session.msg})
     else:
-        return IntentCommand(randint(30, 70) * 1.0, 'adpate_text', args={'text': session.msg})
+        return IntentCommand(randint(30, 70) * 1.0, 'adapter_text', args={'text': session.msg})

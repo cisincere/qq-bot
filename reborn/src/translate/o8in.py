@@ -25,5 +25,3 @@ def translate(text):
         return json.loads(string)[0]["translations"][0]["text"]
     except Exception as e:
         return '是服务器的错，不是我的错，呜呜呜呜~~'
-
-

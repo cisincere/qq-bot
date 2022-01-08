@@ -1,0 +1,27 @@
+<!--
+    配置说明
+    config为根节点
+        bean节点不能多于2两个
+            property节点可以多个
+                属性名    类型     属性值
+                kw      String    关键字/命令
+                model   String    类路径(例如：reference.ReferenceModel)
+                class   String    类名
+                cf      String    调用的方法(call-function)
+
+-->
+<config>
+    <bean type="key-word">
+        <property kw="" model="xx.xx"  class="" cf="name"/>
+        <property kw="" model="xx.xx"  class="" cf="name"/>
+        <property kw="" model="xx.xx"  class="" cf="name"/>
+        <property kw="" model="xx.xx"  class="" cf="name"/>
+        <property kw="" model="xx.xx"  class="" cf="name"/>
+    </bean>
+    <bean type="command">
+        <property kw="" model="xx.xx" class="" cf="name"/>
+        <property kw="" model="xx.xx" class="" cf="name"/>
+        <property kw="" model="xx.xx" class="" cf="name"/>
+        <property kw="" model="xx.xx" class="" cf="name"/>
+    </bean>
+</config>
